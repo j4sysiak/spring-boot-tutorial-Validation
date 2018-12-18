@@ -35,7 +35,7 @@
 					</div>
 					
 					<div class="input-group">
-						<input type="password" name="repeatpassword" placeholder="Repeat password"
+						<form:input type="password" path="repeatPassword" placeholder="Repeat password"
 							class="form-control" />
 					</div>
 

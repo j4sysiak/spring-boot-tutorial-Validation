@@ -35,6 +35,9 @@ public class SiteUser {
 	@Column(name = "password", length=60)
 	private String password;
 	
+	@Transient
+	private String repeatPassword;
+	
 	@Column(name="role", length=20)
 	private String role;
 
@@ -77,6 +80,14 @@ public class SiteUser {
 	public void setPlainPassword(String plainPassword) {
 		this.password = new BCryptPasswordEncoder().encode(plainPassword);
 		this.plainPassword = plainPassword;
+	}
+
+	public String getRepeatPassword() {
+		return repeatPassword;
+	}
+
+	public void setRepeatPassword(String repeatPassword) {
+		this.repeatPassword = repeatPassword;
 	}
 
 }
