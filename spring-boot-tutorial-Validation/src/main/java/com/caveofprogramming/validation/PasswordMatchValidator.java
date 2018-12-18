@@ -8,9 +8,23 @@ import com.caveofprogramming.model.SiteUser;
 public class PasswordMatchValidator implements ConstraintValidator<PasswordMatch, SiteUser> {
 
 	@Override
-	public boolean isValid(SiteUser value, ConstraintValidatorContext context) {
-		// TODO Auto-generated method stub
-		return false;
+	public void initialize(PasswordMatch p) {}
+
+	@Override
+	public boolean isValid(SiteUser user, ConstraintValidatorContext c) {
+		
+		String plainPassword = user.getPlainPassword();
+		String repeatPassword = user.getRepeatPassword();
+		
+		if(plainPassword == null || plainPassword.length() == 0) {
+			return true;
+		}
+		
+		if(plainPassword == null || !plainPassword.equals(repeatPassword)) {
+			return false;
+		}
+			
+		return true;
 	}
 
 }

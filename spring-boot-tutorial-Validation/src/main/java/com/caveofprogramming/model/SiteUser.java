@@ -12,10 +12,13 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.caveofprogramming.validation.PasswordMatch;
  
 
 @Entity
 @Table(name = "site_user")
+@PasswordMatch(message="{register.repeatpassword.mismatch}")
 public class SiteUser {
 
 	@Id
