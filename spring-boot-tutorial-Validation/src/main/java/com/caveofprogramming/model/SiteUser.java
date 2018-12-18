@@ -10,6 +10,8 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  
 
 @Entity
@@ -73,6 +75,7 @@ public class SiteUser {
 	}
 
 	public void setPlainPassword(String plainPassword) {
+		this.password = new BCryptPasswordEncoder().encode(plainPassword);
 		this.plainPassword = plainPassword;
 	}
 
