@@ -6,6 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+ 
 
 @Entity
 @Table(name = "site_user")
@@ -17,7 +22,13 @@ public class SiteUser {
 	private Long id;
 
 	@Column(name = "email", unique=true)
+	//@Email(message="{register.email.invalid}")
+	@NotEmpty(message="{register.email.invalid}")
 	private String email;
+
+	@Transient
+	@Size(min=2, max=15, message="{register.password.size}")
+	private String plainPassword;
 
 	@Column(name = "password", length=60)
 	private String password;
@@ -55,6 +66,14 @@ public class SiteUser {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getPlainPassword() {
+		return plainPassword;
+	}
+
+	public void setPlainPassword(String plainPassword) {
+		this.plainPassword = plainPassword;
 	}
 
 }

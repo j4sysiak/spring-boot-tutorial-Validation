@@ -9,9 +9,10 @@
 <div class="row">
 
 	<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-	
-		<form:errors path="email" />
-		<form:errors path="password" />
+	 
+		<div class="login-error ">
+			<form:errors path="user.*" />
+		</div>
 		 
 		<div class="panel panel-default">
 
